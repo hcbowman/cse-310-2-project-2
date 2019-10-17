@@ -1,0 +1,6 @@
+
+
+defn.o: defn.h
+	$(CC) $(CPPFLAGS) -c defn.h
+    
+####################
