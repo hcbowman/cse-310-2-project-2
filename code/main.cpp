@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<string>
+#include<fstream>
 #include"defn.h"
 
 int main (int argc, char** argv) {
@@ -10,13 +11,14 @@ int main (int argc, char** argv) {
 
     //Objects
     std::vector<std::string> dates_vector; //Holds the range of years inputed via command line
+    std::fstream csv_in;
 
 
     //Disable synchronization between the C and C++ standard streams
 	std::ios::sync_with_stdio(false);
 
     //Get command line args
-    //TODO: change argv to argc maybe
+    //TODO: change to get dates and add to struct?
     if (argc != 1) {
 
         for (int i = 2; i < argc; i++) {
@@ -28,6 +30,15 @@ int main (int argc, char** argv) {
     else {
         return -1;
     }
+
+    for (int i = 0; i < dates_vector.size(); i++) {
+
+        std::string det_str = "details-";
+        csv_in.open(det_str << dates_vector[i] << ".csv" ,std::ios::in);
+
+    }
+
+    
 
 
 
