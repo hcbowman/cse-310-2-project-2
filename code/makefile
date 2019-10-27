@@ -3,14 +3,8 @@ CPPFLAGS=--std=c++11 -pedantic -Wall
 
 all: storm
 
-storm: main.cpp heap.o defn.o prime.o
-	$(CC) $(CPPFLAGS) main.cpp heap.o defn.o prime.o -o storm
-
-heap.o: heap.cpp
-	$(CC) $(CPPFLAGS) -c heap.cpp
-
-prime.o: prime.cpp
-	$(CC) $(CPPFLAGS) -c prime.cpp
+storm: main.cpp
+	$(CC) $(CPPFLAGS) main.cpp -o storm
 
 clean:
 	rm -f *.o *.out *.exe *.stackdump storm

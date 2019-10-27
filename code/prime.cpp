@@ -20,7 +20,7 @@ bool TestForPrime( int val )
     return( factor > limit );
 }
 
-int main()
+int prime_main()
 {
 	int i, n, p;
 
@@ -38,5 +38,7 @@ int main()
 		else
 			printf( "%d is not a prime.\n", p );
 	}
+
+	return 0;
 }
 

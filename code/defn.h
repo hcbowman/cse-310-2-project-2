@@ -1,3 +1,4 @@
+#include<string>
 #define	STATE_LEN	15
 #define	MONTH_LEN	10
 #define	EVENT_LEN	26
@@ -13,19 +14,19 @@ struct annual_storms{
 
 struct storm_event{
 	int event_id; // Event id
-	char state[ STATE_LEN ]; // State name
+	std::string state; // State name
 	int year; // Four digit year of event
-	char month_name[ MONTH_LEN ]; // Month of event
-	char event_type[ EVENT_LEN ]; // Event type
-	char cz_type; // Where event happened, C, Z, or M
-	char cz_name[ COUNTY_LEN ]; // Name of county/zone
+	std::string month_name; // Month of event
+	std::string event_type; // Event type
+	std::string cz_type; // Where event happened, C, Z, or M
+	std::string cz_name; // Name of county/zone
 	int injuries_direct; // Number of direct injuries
 	int injuries_indirect; // Number of indirect injuries
 	int deaths_direct; // Number of direct deaths
 	int deaths_indirect; // Number of indirect deaths
 	int damage_property; // Amount of property damage; convert to integer
 	int damage_crops; // Amount of crop damage; convert to integer
-	char tor_f_scale[ TOR_LEN ]; // Strength of tornado on Fujita scale
+	std::string tor_f_scale; // Strength of tornado on Fujita scale
     struct fatality_event *f; // Linked list of fatalities associated with this storm event
 };
 
@@ -40,9 +41,10 @@ struct fatality_event{
 };
 
 struct hash_table_entry{
-    char event_id; // Event id -- key used to hash on
+    int event_id; // Event id -- key used to hash on
     int year; // Year of storm event
     int event_index; // For the given year, the index into array of storm events
+	struct hash_table_entry *next; // Pointer to next entry in case of collisions
 };
 
 struct bst_node{ // A binary search tree

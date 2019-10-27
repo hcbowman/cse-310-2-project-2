@@ -4,3 +4,39 @@ defn.o: defn.h
 	$(CC) $(CPPFLAGS) -c defn.h
     
 ####################
+
+
+CC=g++
+CPPFLAGS=--std=c++11 -pedantic -Wall
+
+all: storm
+
+storm: main.cpp heap.o prime.o
+	$(CC) $(CPPFLAGS) main.cpp heap.o prime.o -o storm
+
+heap.o: heap.cpp
+	$(CC) $(CPPFLAGS) -c heap.cpp
+
+prime.o: prime.cpp
+	$(CC) $(CPPFLAGS) -c prime.cpp
+
+clean:
+	rm -f *.o *.out *.exe *.stackdump storm
+
+
+	                //storm_event_array = new storm_event;
+
+/*                 storm_event_array->event_id = std::stoi(words_vect.at(0));
+                storm_event_array->state = words_vect.at(1);
+                storm_event_array->year = std::stoi(words_vect.at(2));
+                storm_event_array->month_name = words_vect.at(3);
+                storm_event_array->event_type = words_vect.at(4);
+                storm_event_array->cz_type = words_vect.at(5);
+                storm_event_array->cz_name = words_vect.at(6);
+                storm_event_array->injuries_direct = std::stoi(words_vect.at(7));
+                storm_event_array->injuries_indirect = std::stoi(words_vect.at(8));
+                storm_event_array->deaths_direct = std::stoi(words_vect.at(9));
+                storm_event_array->deaths_indirect = std::stoi(words_vect.at(10));
+                storm_event_array->damage_property = std::stoi(words_vect.at(11));
+                storm_event_array->damage_crops = std::stoi(words_vect.at(12));
+                storm_event_array->tor_f_scale = words_vect.at(13); */
