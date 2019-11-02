@@ -7,8 +7,10 @@ file_handler::file_handler() {
 file_handler::file_handler(int arg_count, char** arg_var) {
 
     argc = arg_count;
+    file_count = arg_count-2;
     argv = arg_var;
 
+    set_total_ecs();
 
 }
 
@@ -19,8 +21,24 @@ file_handler::~file_handler() {
 void file_handler::set_files(int arg_count, char** arg_var) {
 
     argc = arg_count;
+    file_count = arg_count-2;
     argv = arg_var;
+    
 
+    set_total_ecs();
+
+}
+
+std::string file_handler::get_file_name(int index) {
+    return efcv.at(index).file_name;;
+}
+
+int file_handler::get_file_year(int index) {
+    return efcv.at(index).year;
+}
+
+int file_handler::get_file_count() {
+    return file_count;
 }
 
 int file_handler::count_events() {
@@ -36,7 +54,6 @@ int file_handler::count_events() {
     //subtract 1 for the header in the event file
 	return count--;
 }
-
 void file_handler::set_event_counts_helper() {
 
     for(int i = 2; i < argc; i++) {
@@ -45,6 +62,8 @@ void file_handler::set_event_counts_helper() {
         
 
         event_file_count efc;
+
+        efc.year = std::stoi(argv[i]);
 
         efc.file_name = "details-" + st + ".csv";
 
@@ -60,10 +79,9 @@ void file_handler::set_event_counts_helper() {
 
 
 }
+void file_handler::set_total_ecs() {
 
-void file_handler::set_event_counts() {
-
-    set_event_counts();
+    set_event_counts_helper();
 
     for (auto efc : efcv) {
 
@@ -73,7 +91,7 @@ void file_handler::set_event_counts() {
 
 }
 
-int file_handler::get_event_counts() {
+int file_handler::get_total_ecs() {
 
     //DEBUG:
     std::cout << "events_total:" << total_events << "\n";
@@ -116,11 +134,11 @@ bool file_handler::test_for_prime( int val ) {
     return( factor > limit );
 }
 
-int file_handler::get_ht_size(int count) {
+int file_handler::get_ht_size() {
     
 	int ht_size;
 
-	for(int i = count*2; ; i++ ){
+	for(int i = total_events*2; ; i++ ){
 
         if( test_for_prime( i ) ) {
             ht_size = i;

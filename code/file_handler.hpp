@@ -12,6 +12,7 @@ class file_handler {
     private:
 
     struct event_file_count{
+        int year;
         std::string file_name;
         int number_of_events;
     };
@@ -19,26 +20,31 @@ class file_handler {
     int argc;
     char** argv;
     int total_events;
+    int file_count;
 
-    std::ifstream csv_in;
-    std::vector<event_file_count> efcv;
+    static std::vector<event_file_count> efcv;
+
+
     int count_events();
     void set_event_counts_helper();
+    void set_total_ecs();
     bool test_for_prime( int val );
 
 
     public:
 
+    static std::ifstream csv_in;
     file_handler();
     file_handler(int arg_count, char** arg_var);
     ~file_handler();
 
     void set_files(int arg_count, char** arg_var);
-    event_file_count get_files();
-    void set_event_counts();
-    int get_event_counts();
-    int get_individual_ec(std::string fn);
-    int get_ht_size(int count);
+    static std::string get_file_name(int index);
+    static int get_file_year(int index);
+    int get_file_count();
+    int get_total_ecs();
+    static int get_individual_ec(std::string fn);
+    int get_ht_size();
 
 
 };
