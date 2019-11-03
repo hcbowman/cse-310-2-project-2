@@ -5,6 +5,7 @@
 #include<fstream>
 #include<vector>
 #include<math.h>
+#include<sstream>
 
 class file_handler {
 
@@ -22,7 +23,7 @@ class file_handler {
     int total_events;
     int file_count;
 
-    static std::vector<event_file_count> efcv;
+    std::vector<event_file_count> efcv;
 
 
     int count_events();
@@ -33,17 +34,17 @@ class file_handler {
 
     public:
 
-    static std::ifstream csv_in;
+    std::ifstream csv_in;
     file_handler();
     file_handler(int arg_count, char** arg_var);
     ~file_handler();
 
     void set_files(int arg_count, char** arg_var);
-    static std::string get_file_name(int index);
-    static int get_file_year(int index);
+    std::string get_file_name(int index);
+    int get_file_year(int index);
     int get_file_count();
     int get_total_ecs();
-    static int get_individual_ec(std::string fn);
+    int get_individual_ec(std::string fn);
     int get_ht_size();
 
 
