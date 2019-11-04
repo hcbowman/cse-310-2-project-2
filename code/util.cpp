@@ -1,11 +1,23 @@
 #include"util.hpp"
 
-void util::insert_node() {
+/* util::util(int ht_size) : hash_table(ht_size) {
+    
+} */
+
+/* util::util(int ht_size, int arg_count, char** arg_var) :file_handler(), hash_table(ht_size) {
+    
+} */
+
+util::util(int arg_count, char** arg_var) : hash_table(arg_count, arg_var) {
+    
+}
+
+void util::insert_node(annual_storms as_array[], int index) {
 
     int hash_key;
 
-    std::string file_name = file_handler::get_file_name(index);
-    int events = file_handler::get_individual_ec(file_name);
+    std::string file_name = get_file_name(index);
+    int events = get_individual_ec(file_name);
     storm_event* sep; //Storm event pointer
 
 
@@ -27,7 +39,7 @@ void util::insert_node() {
         
 
     //Add the years of the storm events into the annual storms array; index suposedly contains the year
-    annual_storms_a[index].year = file_handler::get_file_year(index);
+    as_array[index].year = file_handler::get_file_year(index);
 
     //int storm_events_size = 50; //The number of sapces left in the array storm events, decrements evry loop
     int event_cnt = 0; //Count of the number of events in one file 
@@ -77,7 +89,7 @@ void util::insert_node() {
         //Hash Entries
         hash_key = ht_size % std::stoi(words_vect.at(0));
 
-        if (hash_table_s[hash_key] == nullptr) {
+        if (the_table[hash_key] == nullptr) {
 
             hash_table_s[hash_key] = new hash_table_entry();
             hash_table_s[hash_key]->event_id = std::stoi(words_vect.at(0));
@@ -122,7 +134,7 @@ void util::insert_node() {
         //event_cnt_total++;
         //}
 
-        annual_storms_a[index].events = storm_event_array;
+        as_array[index].events = storm_event_array;
 
         
 

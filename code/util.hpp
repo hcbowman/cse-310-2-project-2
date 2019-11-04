@@ -1,16 +1,18 @@
 #ifndef UTIL_HPP
 #define UTIL_HPP
 
-#include"file_handler.hpp"
 #include"hash_table.hpp"
 
-class util: public file_handler, public hash_table {
+class util: public hash_table {
 
     private:
 
     public:
 
-    void insert_node();
+    util(int arg_count, char** arg_var);
+    //util(int ht_size, int arg_count, char** arg_var);
+
+    //void insert_node(annual_storms as_array[],int index);
 
 };
 

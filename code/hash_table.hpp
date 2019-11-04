@@ -4,8 +4,9 @@
 #include<iostream>
 #include<string>
 #include"hash_entry.hpp"
+#include"file_handler.hpp"
 
-class hash_table{
+class hash_table: public file_handler {
 
     private:
 
@@ -14,11 +15,13 @@ class hash_table{
     public:
 
     hash_table();
-    hash_table(int size);
+    hash_table(int arg_count, char** arg_var);
     ~hash_table();
 
+
+
     // int hash_func();
-    // void insert_nodes(annual_storms as_array[], int index, int ht_size);
+    void insert_nodes(annual_storms as_array[], int index);
     // int get_node();
     // void delete_node();
     // int ht_size();

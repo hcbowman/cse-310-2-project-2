@@ -10,6 +10,15 @@ hash_entry::hash_entry() {
 
 }
 
+hash_entry::hash_entry(int event_id, int year, int event_index) {
+
+    this->ht_entry.event_id = event_id;
+    this->ht_entry.year = year;
+    this->ht_entry.event_index = event_index;
+    this->ht_entry.next = nullptr;
+
+}
+
 int hash_entry::get_key() {
     return ht_entry.event_id;
 }

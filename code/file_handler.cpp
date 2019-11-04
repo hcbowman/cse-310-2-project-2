@@ -11,10 +11,7 @@ file_handler::file_handler(int arg_count, char** arg_var) {
     argv = arg_var;
 
     set_total_ecs();
-
-}
-
-file_handler::~file_handler() {
+    set_ht_size();
 
 }
 
@@ -26,6 +23,7 @@ void file_handler::set_files(int arg_count, char** arg_var) {
     
 
     set_total_ecs();
+    set_ht_size();
 
 }
 
@@ -91,7 +89,7 @@ void file_handler::set_total_ecs() {
 
 }
 
-int file_handler::get_total_ecs() {
+int file_handler::get_total_events() {
 
     //DEBUG:
     std::cout << "events_total:" << total_events << "\n";
@@ -134,9 +132,7 @@ bool file_handler::test_for_prime( int val ) {
     return( factor > limit );
 }
 
-int file_handler::get_ht_size() {
-    
-	int ht_size;
+void file_handler::set_ht_size() {
 
 	for(int i = total_events*2; ; i++ ){
 
@@ -146,6 +142,10 @@ int file_handler::get_ht_size() {
         }
 
     }
+
+}
+
+int file_handler::get_ht_size() {
 
     return ht_size;
 

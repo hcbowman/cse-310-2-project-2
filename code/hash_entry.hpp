@@ -13,13 +13,14 @@ class hash_entry {
     public:
 
     hash_entry();
+    hash_entry(int event_id, int year, int event_index);
     
     int get_key();
     void set_key(int key);
     int get_year();
     void set_year(int year);
     int get_event_index();
-    void set_event_index(int evnt_indx);
+    void set_event_index(int event_index);
     hash_table_entry *get_next();
     void set_next(hash_table_entry *next);
 

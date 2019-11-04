@@ -26,8 +26,8 @@ int main (int argc, char** argv) {
     //std::ifstream csv_in;                                                //File object
     //typedef storm_event* storm_event_ptr;                       
     //storm_event *storm_events = new storm_event[1024];        //pointer to an array of storm_event
-    file_handler fh(argc, argv);
-    annual_storms annual_storms_a[fh.get_total_ecs()];          //array of annual_storms
+    util ut(argc, argv);
+    annual_storms annual_storms_a[ut.get_total_events()];          //array of annual_storms 
 
 
 
@@ -50,7 +50,7 @@ int main (int argc, char** argv) {
     std::cout << "hash_table_size:" << ht_size << "\n";
 
     //Initialize the hash table
-    hash_table ht(ht_size);
+    //hash_table ht(ht_size);
 
     //For each file, fill the hash table 
     for (int i = 0; i <fh.get_file_count(); i++) {
