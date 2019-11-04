@@ -21,8 +21,8 @@ class hash_entry {
     void set_year(int year);
     int get_event_index();
     void set_event_index(int event_index);
-    hash_table_entry *get_next();
-    void set_next(hash_table_entry *next);
+    hash_entry *get_next();
+    void set_next(hash_entry *next);
 
 };
 

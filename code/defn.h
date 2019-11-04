@@ -44,7 +44,7 @@ struct hash_table_entry{
     int event_id; // Event id -- key used to hash on
     int year; // Year of storm event
     int event_index; // For the given year, the index into array of storm events
-	struct hash_table_entry *next; // Pointer to next entry in case of collisions
+	struct hash_entry *next; // Pointer to next entry in case of collisions
 };
 
 struct bst_node{ // A binary search tree

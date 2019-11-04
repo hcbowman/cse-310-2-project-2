@@ -43,10 +43,10 @@ void hash_entry::set_event_index(int evnt_indx) {
     ht_entry.event_index = evnt_indx;
 }
 
-hash_table_entry* hash_entry::get_next() {
+hash_entry* hash_entry::get_next() {
     return ht_entry.next;
 }
 
-void hash_entry::set_next(hash_table_entry *next) {
+void hash_entry::set_next(hash_entry *next) {
     ht_entry.next = next;
 }

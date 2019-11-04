@@ -11,11 +11,37 @@ hash_table::hash_table(int arg_count, char** arg_var): file_handler(arg_count, a
 
 
     //Initialize the ht with nullptrs
-    for (int i = 0; i < ht_size; i++) {
+    for (unsigned int i = 0; i < ht_size; i++) {
 
         the_table[i] = nullptr;
 
     }
+
+}
+
+hash_table::~hash_table() {
+
+    for (unsigned int i = 0; i < ht_size; i++) {
+
+        if (the_table[i] != nullptr) {
+
+            hash_entry *prevEntry = nullptr;
+
+            hash_entry *entry = the_table[i];
+
+            while (entry != nullptr) {
+
+                    prevEntry = entry;
+
+                    entry = entry->get_next();
+
+                    delete prevEntry;
+
+            }
+
+        }
+    }
+    delete[] the_table;
 
 }
 
@@ -271,7 +297,7 @@ void hash_table::insert_nodes(annual_storms as_array[], int index) {
         //storm_events[event_cnt] = storm_event_array;
 
         //Hash Entries
-        hash_key = ht_size % std::stoi(words_vect.at(0));
+        hash_key = ht_size % event_id;
 
         if (the_table[hash_key] == nullptr) {
 
@@ -287,23 +313,19 @@ void hash_table::insert_nodes(annual_storms as_array[], int index) {
         else {
 
             hash_entry *entry = the_table[hash_key];
-            while (entry->get_next != nullptr && entry-> != std::stoi(words_vect.at(0)))
+            while (entry->get_next() != nullptr && entry->get_key() != event_id)
             {
-                entry = entry->get_next;
+                entry = entry->get_next();
             }
-            if (entry->event_id == std::stoi(words_vect.at(0))) {
+            if (entry->get_key() == event_id) {
 
-                the_table[hash_key]->year = std::stoi(words_vect.at(2));
-                the_table[hash_key]->event_index = event_cnt;
+                the_table[hash_key]->set_year(year);
+                the_table[hash_key]->set_event_index(event_index);
                     
             }
             else {
 
-                the_table[hash_key] = new hash_table_entry();
-                the_table[hash_key]->event_id = std::stoi(words_vect.at(0));
-                the_table[hash_key]->year = std::stoi(words_vect.at(2));
-                the_table[hash_key]->event_index = event_cnt;
-                the_table[hash_key]->next = nullptr; 
+                the_table[hash_key] = new hash_entry(event_id, year, event_index);
 
             }
 
@@ -314,14 +336,11 @@ void hash_table::insert_nodes(annual_storms as_array[], int index) {
 
         //hash_entry->event_index = (*storm_events)->year;
 
-        event_cnt++;
+        event_index++;
         //event_cnt_total++;
         //}
 
         as_array[index].events = storm_event_array;
-
-        
-
     }
 
 }
