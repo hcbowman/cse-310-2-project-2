@@ -13,7 +13,7 @@ hash_table::hash_table(int arg_count, char** arg_var): file_handler(arg_count, a
     //Initialize the ht with nullptrs
     for (unsigned int i = 0; i < ht_size; i++) {
 
-        the_table[i] = nullptr;
+        the_table[i] = NULL;
 
     }
 
@@ -23,13 +23,13 @@ hash_table::~hash_table() {
 
     for (unsigned int i = 0; i < ht_size; i++) {
 
-        if (the_table[i] != nullptr) {
+        if (the_table[i] != NULL) {
 
-            hash_entry *prevEntry = nullptr;
+            hash_entry *prevEntry = NULL;
 
             hash_entry *entry = the_table[i];
 
-            while (entry != nullptr) {
+            while (entry != NULL) {
 
                 prevEntry = entry;
 
@@ -208,7 +208,25 @@ void hash_table::print_ht() {
 
 } */
 
+int converter(std::string wrd) {
+
+
+
+    char c = wrd.at(wrd.size() - 1);
+    wrd.pop_back();
+
+    float f = std::stof(wrd);
+
+    if ()
+
+    return f
+
+
+}
+
 void hash_table::insert_nodes(annual_storms as_array[], int index) {
+
+    std::ifstream csv_in;
 
     int hash_key;
     int event_index = 0; // For the given year, the index into array of storm events
@@ -238,14 +256,11 @@ void hash_table::insert_nodes(annual_storms as_array[], int index) {
     //events_perfile = fh.get_individual_ec("details-" + st + ".csv");
     //std::cout << evnts << "\n";
 
-    //Add the year of the storm events into the annual storms array
-    as_array[index].year = get_file_year(index);
-
     //int storm_events_size = 50; //The number of sapces left in the array storm events, decrements evry loop
 
-    std::getline(file_handler::csv_in, line); //Skips first line
+    std::getline(csv_in, line); //Skips first line
     //Gets each row of the file and puts it into a struct storm_event, where each struct is stored into an array of storm event
-    while(std::getline(file_handler::csv_in, line)) {
+    while(std::getline(csv_in, line)) {
 
         sep = &storm_event_array[event_index];
 
@@ -297,9 +312,9 @@ void hash_table::insert_nodes(annual_storms as_array[], int index) {
         //storm_events[event_cnt] = storm_event_array;
 
         //Hash Entries
-        hash_key = ht_size % event_id;
+        hash_key = event_id % ht_size;
 
-        if (the_table[hash_key] == nullptr) {
+        if (the_table[hash_key] == NULL) {
 
             the_table[hash_key] = new hash_entry(event_id, year, event_index);
             /* the_table[hash_key]->event_id = std::stoi(words_vect.at(0));
@@ -313,7 +328,7 @@ void hash_table::insert_nodes(annual_storms as_array[], int index) {
         else {
 
             hash_entry *entry = the_table[hash_key];
-            while (entry->get_next() != nullptr && entry->get_key() != event_id)
+            while (entry->get_next() != NULL && entry->get_key() != event_id)
             {
                 entry = entry->get_next();
             }

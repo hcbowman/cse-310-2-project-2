@@ -38,7 +38,7 @@ class file_handler {
     //std::shared_ptr<std::vector<event_file_count>> efcv;
     // = std::make_shared<std::vector<event_file_count>>;
     // = std::make_shared<std::vector<event_file_count>>;
-    std::ifstream csv_in;
+    //std::ifstream csv_in;
 
     file_handler();
     file_handler(int arg_count, char** arg_var);

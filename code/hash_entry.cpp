@@ -6,7 +6,7 @@ hash_entry::hash_entry() {
     ht_entry.event_id = 0;
     ht_entry.year = 0;
     ht_entry.event_index = 0;
-    ht_entry.next = nullptr;
+    ht_entry.next = NULL;
 
 }
 
@@ -15,7 +15,7 @@ hash_entry::hash_entry(int event_id, int year, int event_index) {
     this->ht_entry.event_id = event_id;
     this->ht_entry.year = year;
     this->ht_entry.event_index = event_index;
-    this->ht_entry.next = nullptr;
+    this->ht_entry.next = NULL;
 
 }
 

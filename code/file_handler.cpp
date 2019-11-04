@@ -7,8 +7,10 @@ file_handler::file_handler() {
 file_handler::file_handler(int arg_count, char** arg_var) {
 
     argc = arg_count;
-    file_count = arg_count-2;
     argv = arg_var;
+    total_events = 0;
+    file_count = arg_count-2;
+    ht_size = 0;
 
     set_total_ecs();
     set_ht_size();
@@ -18,9 +20,8 @@ file_handler::file_handler(int arg_count, char** arg_var) {
 void file_handler::set_files(int arg_count, char** arg_var) {
 
     argc = arg_count;
-    file_count = arg_count-2;
     argv = arg_var;
-    
+    file_count = arg_count-2;
 
     set_total_ecs();
     set_ht_size();
@@ -56,6 +57,8 @@ void file_handler::set_event_counts_helper() {
 
     for(int i = 2; i < argc; i++) {
 
+        std::ifstream csv_in;
+
         std::string st = argv[i];
         
 
@@ -65,9 +68,20 @@ void file_handler::set_event_counts_helper() {
 
         efc.file_name = "details-" + st + ".csv";
 
-		csv_in.open(efc.file_name, std::ios::in);
+		csv_in.open(efc.file_name);
 
-        efc.number_of_events += count_events(csv_in);
+        int count = 0;
+
+        std::string line_temp;
+
+        while ( std::getline(csv_in, line_temp)){
+            count++;
+        }
+        //subtract 1 for the header in the event file
+        count--;
+
+        //efc.number_of_events += count_events(csv_in);
+        efc.number_of_events += count;
 
 		csv_in.close();
 
