@@ -13,6 +13,13 @@
 
 int main (int argc, char** argv) {
 
+
+    std::cout << "NO" << "\n";
+
+    if (argv[1] == nullptr) {
+        return -1;
+    }
+
     //Global Variables 
     int num_years = std::atoi(argv[1]);
     //int events_perfile = 0;
@@ -35,9 +42,11 @@ int main (int argc, char** argv) {
 
 
     //Get command line args
-    if (argc != 1) { 
+    if (argc < 1) { 
         return -1;
     }
+
+    std::cout << "NO" << "\n";
 
     //Pass inputed files to file handler
     //fh.set_files(argc, argv);
@@ -59,7 +68,7 @@ int main (int argc, char** argv) {
     }
 
 
-
+    std::cout << "NO" << "\n";
 
     for (int i = 0; i < num_years; i++) {
 

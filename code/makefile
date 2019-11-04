@@ -1,5 +1,5 @@
 CC=g++
-CPPFLAGS=--std=c++11 -pedantic -Wall
+CPPFLAGS=--std=c++11 -pedantic -Wall -g
 
 all: storm
 

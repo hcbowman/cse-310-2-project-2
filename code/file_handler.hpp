@@ -25,7 +25,7 @@ class file_handler {
     int file_count; //The number files passed into the original program
     std::vector<event_file_count> efcv; //Vector that stores structs with year, file name and num of events in that file. (1951, details-1951.csv, 221)
 
-    int count_events();
+    int count_events(std::ifstream& csv_in);
     void set_event_counts_helper();
     void set_total_ecs();
     bool test_for_prime( int val );

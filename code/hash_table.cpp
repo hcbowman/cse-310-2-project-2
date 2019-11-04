@@ -31,11 +31,11 @@ hash_table::~hash_table() {
 
             while (entry != nullptr) {
 
-                    prevEntry = entry;
+                prevEntry = entry;
 
-                    entry = entry->get_next();
+                entry = entry->get_next();
 
-                    delete prevEntry;
+                delete prevEntry;
 
             }
 

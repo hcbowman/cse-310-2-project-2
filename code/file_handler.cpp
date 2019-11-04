@@ -39,9 +39,9 @@ int file_handler::get_file_count() {
     return file_count;
 }
 
-int file_handler::count_events() {
+int file_handler::count_events(std::ifstream& csv_in) {
 
-    int count;
+    int count = 0;
 
 	std::string line_temp;
 
@@ -67,7 +67,7 @@ void file_handler::set_event_counts_helper() {
 
 		csv_in.open(efc.file_name, std::ios::in);
 
-        efc.number_of_events += count_events();
+        efc.number_of_events += count_events(csv_in);
 
 		csv_in.close();
 
