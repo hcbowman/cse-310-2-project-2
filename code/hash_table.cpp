@@ -210,16 +210,39 @@ void hash_table::print_ht() {
 
 int converter(std::string wrd) {
 
+    float f;
+    int i;
 
 
+    //Get the metric suffix
     char c = wrd.at(wrd.size() - 1);
-    wrd.pop_back();
 
-    float f = std::stof(wrd);
+    if (c == 'K') {
 
-    if ()
+        //pop off the metric prefex
+        wrd.pop_back();
 
-    return f
+        //Convert the number portion to a float
+        f = std::stof(wrd);
+
+        i = f*1000;
+
+    } else if (c == 'M') {
+
+        //pop off the metric prefex
+        wrd.pop_back();
+
+        //Convert the number portion to a float
+        f = std::stof(wrd);
+
+        i = f*1000000;
+
+    } else {
+        i = std::stoi(wrd);
+    }
+
+
+    return i;
 
 
 }
@@ -289,7 +312,8 @@ void hash_table::insert_nodes(annual_storms as_array[], int index) {
         int injuries_indirect = std::stoi(words_vect.at(8));
         int deaths_direct = std::stoi(words_vect.at(9));
         int deaths_indirect = std::stoi(words_vect.at(10));
-        int damage_property = std::stoi(words_vect.at(11));
+        //int damage_property = std::stoi(words_vect.at(11));
+        int damage_property = converter(words_vect.at(11));
         int damage_crops = std::stoi(words_vect.at(12));
         std::string tor_f_scale = words_vect.at(13);
 
